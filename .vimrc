@@ -63,7 +63,7 @@ syntax enable
 " ==================== theme ====================
 " font & font size
 set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11
-set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h11
+" set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h11
 " color
 set t_Co=256
 set background=dark
