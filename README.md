@@ -5,35 +5,35 @@ My vim configuration
 
 1. Set up [Vundle]:
 
-    `$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+  `$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
 2. Install Plugins:
 
-   Launch `vim` and run `:PluginInstall`
+  Launch `vim` and run `:PluginInstall`
 
-   To install from command line: `vim +PluginInstall +qall`
+  To install from command line: `vim +PluginInstall +qall`
 
 3. Install [Fonts]:
 
-    `cd ~/.vim/bundle/fonts/ && ./install.sh`
+  `cd ~/.vim/bundle/fonts/ && ./install.sh`
 
 4. Set up [Markdown]:
 
-    `[sudo] npm installi -g instant-markdown-d`
+  `[sudo] npm installi -g instant-markdown-d`
 
 5. Set up [Syntastic-react]:
-  
-    ```
-    [sudo] npm install -g eslint
 
-    [sudo] npm install -g babel-eslint
+  ```
+  [sudo] npm install -g eslint
 
-    [sudo] npm install -g eslint-plugin-react
-    ```
+  [sudo] npm install -g babel-eslint
 
-Create a config like this in your project's `.eslintrc`, or do so globally by placing it in `~/.eslintrc`:
+  [sudo] npm install -g eslint-plugin-react
+  ```
 
-```
+  Create a config like this in your project's `.eslintrc`, or do so globally by placing it in `~/.eslintrc`:
+
+  ```
   {
     "parser": "babel-eslint",
     "env": {
@@ -55,7 +55,7 @@ Create a config like this in your project's `.eslintrc`, or do so globally by pl
       "no-underscore-dangle": 0
     }
   }
-```
+  ```
 
 
 
