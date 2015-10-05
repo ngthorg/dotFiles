@@ -15,20 +15,20 @@ My vim configuration
 
 3. Install [Fonts]:
 
-  `cd ~/.vim/bundle/fonts/ && ./install.sh`
+  `$ cd ~/.vim/bundle/fonts/ && ./install.sh`
 
 4. Set up [Markdown]:
 
-  `[sudo] npm installi -g instant-markdown-d`
+  `$ [sudo] npm install -g instant-markdown-d`
 
 5. Set up [Syntastic-react]:
 
   ```
-  [sudo] npm install -g eslint
+  $ [sudo] npm install -g eslint
 
-  [sudo] npm install -g babel-eslint
+  $ [sudo] npm install -g babel-eslint
 
-  [sudo] npm install -g eslint-plugin-react
+  $ [sudo] npm install -g eslint-plugin-react
   ```
 
   Create a config like this in your project's `.eslintrc`, or do so globally by placing it in `~/.eslintrc`:
