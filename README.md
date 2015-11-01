@@ -56,6 +56,10 @@ My vim configuration
     }
   }
   ```
+  
+  
+## Tips
+* You can use Shift + i to see hidden files
 
 
 
