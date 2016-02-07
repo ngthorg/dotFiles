@@ -24,40 +24,72 @@ My vim configuration
 5. Set up [Syntastic-react]:
 
   ```
-  $ [sudo] npm install -g eslint
+  $ [sudo] npm i -g eslint
 
-  $ [sudo] npm install -g babel-eslint
-
-  $ [sudo] npm install -g eslint-plugin-react
+  $ npm i babel-eslint eslint eslint-config-airbnb eslint-plugin-react
   ```
 
   Create a config like this in your project's `.eslintrc`, or do so globally by placing it in `~/.eslintrc`:
 
-  ```
-  {
-    "parser": "babel-eslint",
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "settings": {
-      "ecmascript": 6,
-      "jsx": true
-    },
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "strict": 0,
-      "quotes": 0,
-      "no-unused-vars": 0,
-      "camelcase": 0,
-      "no-underscore-dangle": 0
-    }
-  }
-  ```
-  
-  
+```
+parser: 'babel-eslint'
+
+plugins:
+  - react
+
+globals:
+  __DEV__: true
+
+ecmaFeatures:
+  jsx: true
+  experimentalObjectRestSpread: true
+
+env:
+  es6: true
+  node: true
+  browser: true
+
+extends:
+  - airbnb
+
+rules:
+  # Ignore Rules
+  strict: 0
+  indent: [ 2, 2, { SwitchCase: 1 } ]
+  comma-dangle: [1, never]
+  comma-style: [2, last]
+  quotes: [2, single]
+  linebreak-style: [2, unix]
+  no-mixed-spaces-and-tabs: 2
+  no-console: 1
+  semi: [2, never]
+  # airbnb
+  space-after-keywords: [2, always]
+  prefer-template: 0
+  no-shadow: 0
+
+  # Plugin rules
+  react/display-name: 0
+  react/forbid-prop-types: 0
+  react/jsx-curly-spacing: [2, never]
+  react/jsx-handler-names: 1
+  react/jsx-indent-props: [2, 2]
+  react/jsx-indent: [2, 2]
+  react/jsx-key: 2
+  react/jsx-max-props-per-line: [2, { maximum: 3 }]
+  react/jsx-no-bind: 0
+  react/jsx-no-duplicate-props: 2
+  react/jsx-no-literals: 0
+  react/jsx-no-undef: 2
+  react/jsx-sort-prop-types: [1, { callbacksLast: true, ignoreCase: true }]
+  react/jsx-uses-react: 2
+  react/no-direct-mutation-state: 2
+  react/no-is-mounted: 0
+  react/no-multi-comp: 2
+  react/react-in-jsx-scope: 2
+```
+
+
 ## Tips
 * You can use `Shift` + `i` to see hidden files
 
