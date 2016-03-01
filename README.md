@@ -104,3 +104,12 @@ rules:
 
 
 # Atom
+
+### Backup packages
+```
+apm list --installed --bare > packages.list
+```
+### Install packages
+```
+apm install --packages-file packages.list
+```
