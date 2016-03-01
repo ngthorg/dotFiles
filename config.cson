@@ -1,0 +1,52 @@
+"*":
+  "atom-material-ui":
+    colors:
+      genAccent: true
+    fonts: {}
+    panels: {}
+    tabs:
+      compactTabs: true
+    treeView:
+      compactList: true
+      compactTreeView: false
+    ui: {}
+  "autocomplete-go": {}
+  build: {}
+  core:
+    disabledPackages: [
+      "atom-typescript"
+    ]
+    themes: [
+      "atom-material-ui"
+      "material-syntax"
+    ]
+  editor:
+    backUpBeforeSaving: true
+    confirmCheckoutHeadRevision: false
+    fontFamily: "Droid Sans Mono for Powerline"
+    fontSize: 11
+    invisibles: {}
+    scrollPastEnd: true
+    showIndentGuide: true
+    softWrap: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "8e94d2e8-36e9-8824-6693-6a9e201c915d"
+  "go-imports": {}
+  "go-plus":
+    goInstallation: "/usr/local/go/bin/go"
+    goPath: "$HOME/go"
+    runCoverageOnSave: true
+  "language-babel": {}
+  linter: {}
+  "linter-eslint": {}
+  "linter-golinter": {}
+  "linter-scss-lint": {}
+  pigments: {}
+  react: {}
+  "terminal-plus":
+    core: {}
+    style: {}
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
