@@ -26,6 +26,7 @@ linter-eslint@7.2.0
 material-syntax@0.5.0
 navigator-godef@1.0.2
 nerd-treeview@0.4.2
+pain-split@1.4.0
 pigments@0.26.0
 react@0.15.0
 react-snippets@0.4.2
