@@ -6,6 +6,7 @@ atom-ternjs@0.13.2
 autocomplete-go@1.0.6
 builder-go@1.0.0
 docblockr@0.7.3
+emmet@2.4.3
 file-icons@1.7.2
 git-log@0.4.1
 git-plus@5.13.4
