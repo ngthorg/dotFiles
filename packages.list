@@ -35,6 +35,7 @@ pigments@0.26.0
 react@0.15.0
 react-snippets@0.4.2
 redux-snippets@0.2.2
+script@3.7.1
 terminal-plus@0.14.5
 tester-go@1.0.4
 vim-mode@0.65.0
