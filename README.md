@@ -36,7 +36,10 @@ apm list --installed --bare > packages.list
 ```
 apm install --packages-file packages.list
 ```
-
+### Install config
+```
+cp config.cson ~/.atom/config.cson
+```
 
 
 [Vundle]:http://github.com/VundleVim/Vundle.vim
