@@ -1,20 +1,16 @@
 "*":
   "atom-material-ui":
-    colors:
-      genAccent: true
+    colors: {}
     fonts: {}
-    panels: {}
     tabs:
       compactTabs: true
     treeView:
       compactList: true
-      compactTreeView: false
     ui: {}
-  "autocomplete-go": {}
-  build: {}
   core:
     disabledPackages: [
-      "atom-typescript"
+      "go-debug"
+      "vim-mode"
     ]
     themes: [
       "atom-material-ui"
@@ -22,31 +18,15 @@
     ]
   editor:
     backUpBeforeSaving: true
-    confirmCheckoutHeadRevision: false
     fontFamily: "Droid Sans Mono for Powerline"
     fontSize: 11
-    invisibles: {}
     scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
     tabType: "soft"
   "exception-reporting":
-    userId: "8e94d2e8-36e9-8824-6693-6a9e201c915d"
-  "go-imports": {}
-  "go-plus":
-    goInstallation: "/usr/local/go/bin/go"
-    goPath: "$HOME/go"
-    runCoverageOnSave: true
-  "language-babel": {}
-  linter: {}
-  "linter-eslint": {}
-  "linter-golinter": {}
-  "linter-scss-lint": {}
-  pigments: {}
-  react: {}
-  "terminal-plus":
-    core: {}
-    style: {}
-  "tree-view": {}
+    userId: "546e7097-c21c-2f01-add5-fc7461aab880"
+  "ide-flow":
+    flowPath: "/usr/local/bin/flow"
   welcome:
     showOnStartup: false
