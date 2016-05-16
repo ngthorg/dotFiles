@@ -1,7 +1,7 @@
 activate-power-mode@0.4.1
 atom-bootstrap4@1.4.0
 atom-material-ui@1.2.10
-atom-typescript@8.3.0
+atom-react-native-autocomplete@0.0.24
 atom-ternjs@0.13.2
 autocomplete-go@1.0.6
 builder-go@1.0.0
@@ -22,6 +22,8 @@ ide-flow@0.8.0
 javascript-snippets@1.2.1
 jquery-snippets@11.0.0
 language-babel@2.17.2
+language-docker@1.1.6
+language-javascript-jsx@0.3.7
 language-svg@0.9.0
 linter@1.11.4
 linter-eslint@7.2.0
