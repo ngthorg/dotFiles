@@ -1,12 +1,9 @@
 "*":
   "atom-material-ui":
-    colors: {}
-    fonts: {}
     tabs:
       compactTabs: true
     treeView:
       compactList: true
-    ui: {}
   core:
     customFileTypes:
       "source.ini": [
@@ -22,9 +19,10 @@
       ]
     disabledPackages: [
       "go-debug"
-      "vim-mode"
     ]
-    packagesWithKeymapsDisabled: []
+    packagesWithKeymapsDisabled: [
+      "nuclide"
+    ]
     themes: [
       "atom-material-ui"
       "material-syntax"
@@ -32,7 +30,7 @@
   editor:
     backUpBeforeSaving: true
     fontFamily: "Droid Sans Mono for Powerline"
-    fontSize: 10
+    fontSize: 11
     scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
@@ -43,16 +41,22 @@
     promptWhenFileHasChangedOnDisk: false
   "ide-flow":
     flowPath: "/usr/local/bin/flow"
+  linter:
+    errorPanelHeight: 32
   nuclide:
-    "nuclide-blame-provider-hg": {}
-    "nuclide-distraction-free-mode": {}
-    "nuclide-file-tree": {}
+    installRecommendedPackages: true
     "nuclide-home":
       showHome: false
     use:
       "nuclide-diagnostics-store": false
       "nuclide-file-tree": false
       "nuclide-side-bar": false
-  "tree-view": {}
+  "tool-bar":
+    iconSize: "12px"
+    position: "Left"
+    visible: false
   welcome:
     showOnStartup: false
+".ansi.text":
+  editor:
+    showInvisibles: false
