@@ -5,10 +5,11 @@
     treeView:
       compactList: true
   core:
+    autoHideMenuBar: true
     customFileTypes:
       "source.ini": [
         ".buckconfig"
-        ".flowconfig"
+        ".hgrc"
       ]
       "source.json": [
         ".arcconfig"
@@ -17,46 +18,35 @@
       "source.python": [
         "BUCK"
       ]
-    disabledPackages: [
-      "go-debug"
-    ]
-    packagesWithKeymapsDisabled: [
-      "nuclide"
-    ]
+    packagesWithKeymapsDisabled: []
+    telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "material-syntax"
+      "oceanic-next"
     ]
   editor:
-    backUpBeforeSaving: true
-    fontFamily: "Droid Sans Mono for Powerline"
+    fontFamily: "Droid Sans Mono"
     fontSize: 11
     scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
     tabType: "soft"
   "exception-reporting":
-    userId: "546e7097-c21c-2f01-add5-fc7461aab880"
-  "file-watcher":
-    promptWhenFileHasChangedOnDisk: false
+    userId: "09252ad2-d846-ce4e-f5e7-c709f5f70488"
   "ide-flow":
     flowPath: "/usr/local/bin/flow"
-  linter:
-    errorPanelHeight: 32
   nuclide:
-    installRecommendedPackages: true
+    "nuclide-file-tree":
+      showOpenFiles: false
+      showUncommittedChanges: false
     "nuclide-home":
       showHome: false
     use:
       "nuclide-diagnostics-store": false
       "nuclide-file-tree": false
       "nuclide-side-bar": false
-  "tool-bar":
-    iconSize: "12px"
-    position: "Left"
-    visible: false
+      "nuclide-source-control-side-bar": false
+      "nuclide-swift": false
+      "nuclide-task-runner": false
   welcome:
     showOnStartup: false
-".ansi.text":
-  editor:
-    showInvisibles: false
