@@ -37,10 +37,14 @@
   "git-plus":
     general:
       _analyticsUserId: "5e33cd7a-6e9c-44c1-87dd-e5d89d8c56ce"
+  "go-debug": {}
   "go-plus":
-    currentPanelHeight: "18.703703703703702vh"
+    currentPanelHeight: "29.810568295114653vh"
   "ide-flow":
     flowPath: "/usr/local/bin/flow"
+  linter: {}
+  "linter-ui-default":
+    showPanel: true
   nuclide:
     "nuclide-file-tree":
       showOpenFiles: false
