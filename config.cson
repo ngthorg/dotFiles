@@ -1,4 +1,6 @@
 "*":
+  "atom-jasmine-es6-snippets":
+    semicolons: true
   "atom-material-ui":
     tabs:
       compactTabs: true
@@ -19,7 +21,10 @@
       "source.python": [
         "BUCK"
       ]
-    packagesWithKeymapsDisabled: []
+    disabledPackages: [
+      "atom-ide-ui"
+      "ide-flowtype"
+    ]
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
@@ -37,26 +42,30 @@
   "git-plus":
     general:
       _analyticsUserId: "5e33cd7a-6e9c-44c1-87dd-e5d89d8c56ce"
-  "go-debug": {}
   "go-plus":
     currentPanelHeight: "29.810568295114653vh"
   "ide-flow":
     flowPath: "/usr/local/bin/flow"
-  linter: {}
   "linter-ui-default":
-    showPanel: true
+    panelHeight: 300
+  minimap:
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      linter: true
+      linterDecorationsZIndex: 0
   nuclide:
-    "nuclide-file-tree":
-      showOpenFiles: false
-      showUncommittedChanges: false
     "nuclide-home":
       showHome: false
     use:
-      "nuclide-diagnostics-store": false
       "nuclide-file-tree": false
-      "nuclide-side-bar": false
-      "nuclide-source-control-side-bar": false
-      "nuclide-swift": false
       "nuclide-task-runner": false
+  "prettier-atom":
+    prettierEslintOptions:
+      prettierLast: true
+    prettierOptions:
+      singleQuote: true
+      trailingComma: "all"
+    useEslint: true
   welcome:
     showOnStartup: false
