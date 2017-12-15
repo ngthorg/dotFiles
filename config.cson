@@ -22,8 +22,9 @@
         "BUCK"
       ]
     disabledPackages: [
-      "atom-ide-ui"
       "ide-flowtype"
+      "atom-ide-ui"
+      "linter"
     ]
     telemetryConsent: "limited"
     themes: [
@@ -55,6 +56,8 @@
       linter: true
       linterDecorationsZIndex: 0
   nuclide:
+    "nuclide-flow":
+      warnOnNotInstalled: false
     "nuclide-home":
       showHome: false
     use:
