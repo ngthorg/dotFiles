@@ -1,3 +1,4 @@
+# Terminal OSX
 export CLICOLOR=1
 # export LSCOLORS=exfxcxdxbxegedabagacad
 # export LSCOLORS=ExFxCxDxBxegedabagacad
