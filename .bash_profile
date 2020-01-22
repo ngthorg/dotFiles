@@ -1,7 +1,7 @@
-export PATH="/Users/unix/mongodb/bin:$PATH"
 export CLICOLOR=1
 # export LSCOLORS=exfxcxdxbxegedabagacad
-export LSCOLORS=ExFxCxDxBxegedabagacad
+# export LSCOLORS=ExFxCxDxBxegedabagacad
+export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 # goPath
 export GOPATH=/Users/unix/go
