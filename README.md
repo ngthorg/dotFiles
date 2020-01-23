@@ -2,12 +2,16 @@
 
 1. Set up [zsh]
 
-  `$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  ```
+  $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  ```
 
 2. Install Plugins
 - install plugin [zsh-autosuggestions]
 
-  `$ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins`
+  ```
+  $ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins
+  ```
 
 # vim
 My vim configuration
@@ -16,8 +20,10 @@ My vim configuration
 
 1. Set up [Plug]:
 
-  `$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+  ```
+  $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  ```
 
 2. Install Plugins:
 
@@ -42,15 +48,15 @@ My vim configuration
 
 ### Backup packages
 ```
-apm list --installed --bare > packages.list
+$ apm list --installed --bare > packages.list
 ```
 ### Install packages
 ```
-apm install --packages-file packages.list
+$ apm install --packages-file packages.list
 ```
 ### Install config
 ```
-cp config.cson ~/.atom/config.cson
+$ cp config.cson ~/.atom/config.cson
 ```
 
 
