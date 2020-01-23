@@ -1,28 +1,40 @@
+# zsh
+
+1. Set up [zsh]
+
+  `$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
+2. Install Plugins
+- install plugin [zsh-autosuggestions]
+
+  `$ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins`
+
 # vim
 My vim configuration
 
 ## Quick Start Install
 
-1. Set up [Vundle]:
+1. Set up [Plug]:
 
-  `$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+  `$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 
 2. Install Plugins:
 
-  Launch `vim` and run `:PluginInstall`
+  Launch `vim` and run `:PlugInstall`
 
-  To install from command line: `vim +PluginInstall +qall`
+  To install from command line: `vim +PlugInstall +qall`
 
-3. Install [Fonts]:
+3. Install [nerdfonts]:
 
-  `$ cd ~/.vim/bundle/fonts/ && ./install.sh`
+  download and install fronts
 
 4. Set up [Markdown]:
 
   `$ [sudo] npm install -g instant-markdown-d`
 
 ## Tips
-* You can use `Shift` + `i` to see hidden files
+* You can use `Shift` + `i` to see hidden files [NerdTree]
 
 
 
@@ -42,8 +54,11 @@ cp config.cson ~/.atom/config.cson
 ```
 
 
-[Vundle]:http://github.com/VundleVim/Vundle.vim
-[Vim]:http://www.vim.org
-[Git]:http://git-scm.com
-[Fonts]:http://github.com/powerline/fonts
+[zsh]:https://github.com/ohmyzsh/ohmyzsh
+[zsh-autosuggestions]:https://github.com/zsh-users/zsh-autosuggestions
+[Plug]:https://github.com/junegunn/vim-plug
+[Vim]:https://www.vim.org/
+[Git]:https://git-scm.com
+[nerdfonts]:https://www.nerdfonts.com/font-downloads
 [Markdown]:https://github.com/suan/vim-instant-markdown
+[NerdTree]:https://github.com/preservim/nerdtree
