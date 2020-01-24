@@ -5,10 +5,8 @@ filetype off
 " Setup vim-plug
 call plug#begin('~/.vim/plugged')
 
-	Plug 'VundleVim/Vundle.vim'
-	Plug 'tpope/vim-fugitive'
-	Plug 'vim-scripts/L9'
 	" color theme
+  Plug 'hzchirs/vim-material'
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
@@ -19,40 +17,40 @@ call plug#begin('~/.vim/plugged')
   " File Search
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
-	Plug 'majutsushi/tagbar'
 	Plug 'wincent/command-t'
+  " suggestions
+  " Utility
+	Plug 'majutsushi/tagbar'
 	Plug 'mhinz/vim-signify'
 	Plug 'suan/vim-instant-markdown'
+	Plug 'tomtom/tcomment_vim'
+	Plug 'easymotion/vim-easymotion'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	" vim-snipmate start
-	Plug 'garbas/vim-snipmate'
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
-	" Optional:
+	Plug 'garbas/vim-snipmate'
 	Plug 'honza/vim-snippets'
-	" vim-snipmate end
+  " Javascript
 	Plug 'pangloss/vim-javascript'
 	Plug 'isRuslan/vim-es6'
-	Plug 'rstacruz/sparkup'
-	Plug 'tomtom/tcomment_vim'
 	Plug 'heavenshell/vim-jsdoc'
+  " Html
+	Plug 'rstacruz/sparkup'
 	" git
+	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
-	" git end
-	Plug 'easymotion/vim-easymotion'
+	" Syntax
 	Plug 'scrooloose/syntastic'
+	Plug 'sheerun/vim-polyglot'
+	Plug 'dense-analysis/ale'
 	" go
 	Plug 'fatih/vim-go'
 	Plug 'garyburd/go-explorer'
-	" Syntax
-	Plug 'sheerun/vim-polyglot'
 	" React
-	Plug 'dense-analysis/ale'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'mxw/vim-jsx'
-	Plug 'jaxbot/syntastic-react'
 	Plug 'yuezk/vim-js'
 	Plug 'maxmellon/vim-jsx-pretty'
-	" Plug 'justinj/vim-react-snippets'
 	Plug 'ngthorg/vim-react-es6-snippets'
 
 " Initialize plugin system
@@ -64,6 +62,7 @@ set tabstop=2 shiftwidth=2 softtabstop=2 expandtab number
 set regexpengine=1
 syntax on
 
+
 " ==================== front, color, theme ====================
 " font & font size
 set encoding=UTF-8
@@ -73,7 +72,8 @@ set t_Co=256
 set background=dark
 " theme
 colorscheme nord
-syntax reset
+" colorscheme vim-material
+
 
 " ==================== Nord ====================
 
@@ -113,7 +113,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='nord'
+" let g:airline_theme='nord'
+let g:airline_theme='material'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -155,26 +156,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 
-" ==================== Ale Linter ====================
-" Enable ESLint only for JavaScript.
-let b:ale_linters = ['eslint']
-" Equivalent to the above.
-let b:ale_linters = {'javascript': ['eslint']}
-
-
-
-" Colorful style (vim-javascript only)
-let g:vim_jsx_pretty_disable_tsx = 0
-let g:vim_jsx_pretty_template_tags = ['html', 'jsx']
-let g:vim_jsx_pretty_highlight_close_tag = 0
-let g:vim_jsx_pretty_colorful_config = 1
-
-
-
-" ==================== coc ====================
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
-
-
 " ==================== vim-easymotion ====================
 " n-character search motion
 map  / <Plug>(easymotion-sn)
@@ -187,3 +168,23 @@ map  N <Plug>(easymotion-prev)
 nmap <F3> :NERDTreeToggle<CR>
 nmap <F4> :NERDTreeFind<CR>
 nmap <F8> :TagbarToggle<CR>
+
+
+" ==================== Ale Linter ====================
+" Enable ESLint only for JavaScript.
+let b:ale_linters = ['eslint']
+" Equivalent to the above.
+let b:ale_linters = {'javascript': ['eslint']}
+
+
+" ==================== Vim jsx pretty ====================
+" Colorful style (vim-javascript only)
+let g:vim_jsx_pretty_disable_tsx = 0
+let g:vim_jsx_pretty_template_tags = ['html', 'jsx']
+let g:vim_jsx_pretty_highlight_close_tag = 0
+let g:vim_jsx_pretty_colorful_config = 1
+
+
+
+" ==================== coc ====================
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
