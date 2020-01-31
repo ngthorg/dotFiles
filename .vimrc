@@ -92,8 +92,14 @@ autocmd FileType html,xhtml set omnifunc=htmlcomplete#CompleteTags
 
 
 " ==================== Syntastic ====================
-" let g:syntastic_javascript_checkers = ['jsxhint']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 
 " ==================== vim-fugitive ====================
@@ -172,12 +178,6 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 
-" ==================== Keymap ====================
-nmap <F3> :NERDTreeToggle<CR>
-nmap <F4> :NERDTreeFind<CR>
-nmap <F8> :TagbarToggle<CR>
-
-
 " ==================== Ale Linter ====================
 " Enable ESLint only for JavaScript.
 let b:ale_linters = ['eslint']
@@ -193,6 +193,11 @@ let g:vim_jsx_pretty_highlight_close_tag = 0
 let g:vim_jsx_pretty_colorful_config = 1
 
 
-
 " ==================== coc ====================
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+
+
+" ==================== Keymap ====================
+nmap <F3> :NERDTreeToggle<CR>
+nmap <F4> :NERDTreeFind<CR>
+nmap <F8> :TagbarToggle<CR>
