@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tomtom/tlib_vim'
 	Plug 'garbas/vim-snipmate'
 	Plug 'honza/vim-snippets'
+	Plug 'SirVer/ultisnips', { 'tag': '3.2' }
   " Javascript
 	Plug 'pangloss/vim-javascript'
 	Plug 'isRuslan/vim-es6'
