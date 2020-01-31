@@ -198,6 +198,6 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', '
 
 
 " ==================== Keymap ====================
-nmap <F3> :NERDTreeToggle<CR>
-nmap <F4> :NERDTreeFind<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-m> :NERDTreeFind<CR>
 nmap <F8> :TagbarToggle<CR>
