@@ -11,22 +11,22 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
   " File Explorer with Icons
-	Plug 'scrooloose/nerdtree'
+	Plug 'preservim/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'ryanoasis/vim-devicons'
   " File Search
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
+	Plug 'kien/ctrlp.vim'
 	Plug 'wincent/command-t'
-  " suggestions
   " Utility
 	Plug 'majutsushi/tagbar'
 	Plug 'mhinz/vim-signify'
 	Plug 'suan/vim-instant-markdown'
 	Plug 'tomtom/tcomment_vim'
+	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	" vim-snipmate start
+  Plug 'junegunn/goyo.vim'
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" Utility Snippets
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
 	Plug 'garbas/vim-snipmate'
@@ -37,12 +37,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'isRuslan/vim-es6'
 	Plug 'heavenshell/vim-jsdoc'
   " Html
+  Plug 'mattn/emmet-vim'
 	Plug 'rstacruz/sparkup'
 	" git
 	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
 	" Syntax
-	Plug 'scrooloose/syntastic'
+	Plug 'vim-syntastic/syntastic'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'dense-analysis/ale'
 	" go
@@ -67,7 +68,7 @@ syntax on
 " ==================== front, color, theme ====================
 " font & font size
 set encoding=UTF-8
-set guifont=DroidSansMono\ Nerd\ Front:h11
+set guifont=DroidSansMono\ Nerd\ Font:h11
 " color
 set t_Co=256
 set background=dark
@@ -93,7 +94,6 @@ autocmd FileType html,xhtml set omnifunc=htmlcomplete#CompleteTags
 " ==================== Syntastic ====================
 " let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 
 
 " ==================== vim-fugitive ====================
