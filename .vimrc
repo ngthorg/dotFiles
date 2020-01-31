@@ -67,7 +67,7 @@ syntax on
 " ==================== front, color, theme ====================
 " font & font size
 set encoding=UTF-8
-set guifont=Droid\ Sans\ Mono\ Nerd\ Front:h11
+set guifont=DroidSansMono\ Nerd\ Front:h11
 " color
 set t_Co=256
 set background=dark
@@ -98,6 +98,13 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 " ==================== vim-fugitive ====================
 autocmd QuickFixCmdPost *grep* cwindow
+
+
+" ==================== UltiSnips ====================
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 
 
 " ==================== vim-snipmate ====================
