@@ -34,9 +34,9 @@ $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubuserconte
 
   download and install fronts
 
-4. Set up [Markdown]:
+4. Set up [Markdown] [Flow] [flow-language-server]:
 
-  `$ [sudo] npm install -g instant-markdown-d`
+  `$ [sudo] npm install -g instant-markdown-d flow-bin flow-language-server`
 
 ## Tips
 * You can use `Shift` + `i` to see hidden files [NerdTree]
@@ -66,4 +66,6 @@ $ cp config.cson ~/.atom/config.cson
 [Git]:https://git-scm.com
 [nerdfonts]:https://www.nerdfonts.com/font-downloads
 [Markdown]:https://github.com/suan/vim-instant-markdown
+[Flow]:https://flow.org
+[flow-language-server]:https://github.com/facebookarchive/flow-language-server
 [NerdTree]:https://github.com/preservim/nerdtree

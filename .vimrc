@@ -13,53 +13,55 @@ call plug#begin('~/.vim/plugged')
   " File Explorer with Icons
 	Plug 'preservim/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
-	Plug 'ryanoasis/vim-devicons'
+	Plug 'ryanoasis/vim-devicos'
   " File Search
 	Plug 'kien/ctrlp.vim'
 	Plug 'wincent/command-t'
   " Utility
 	Plug 'majutsushi/tagbar'
-	Plug 'mhinz/vim-signify'
 	Plug 'suan/vim-instant-markdown'
-	Plug 'tomtom/tcomment_vim'
+	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
   Plug 'junegunn/goyo.vim'
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	" Utility Snippets
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
 	Plug 'garbas/vim-snipmate'
-	Plug 'honza/vim-snippets'
 	Plug 'SirVer/ultisnips', { 'tag': '3.2' }
+	Plug 'honza/vim-snippets'
   " Javascript
 	Plug 'pangloss/vim-javascript'
 	Plug 'isRuslan/vim-es6'
 	Plug 'heavenshell/vim-jsdoc'
+	" React
+	Plug 'mxw/vim-jsx'
+	Plug 'yuezk/vim-js'
+	Plug 'maxmellon/vim-jsx-pretty'
+	Plug 'greg-js/vim-react-es6-snippets'
   " Html
   Plug 'mattn/emmet-vim'
 	Plug 'rstacruz/sparkup'
 	" git
 	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
+	Plug 'mhinz/vim-signify'
 	" Syntax
 	Plug 'vim-syntastic/syntastic'
 	Plug 'sheerun/vim-polyglot'
-	Plug 'dense-analysis/ale'
+	" Plug 'dense-analysis/ale'
 	" go
-	Plug 'fatih/vim-go'
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	Plug 'garyburd/go-explorer'
-	" React
-	Plug 'mxw/vim-jsx'
-	Plug 'yuezk/vim-js'
-	Plug 'maxmellon/vim-jsx-pretty'
-	Plug 'ngthorg/vim-react-es6-snippets'
 
 " Initialize plugin system
 call plug#end()
 
+filetype plugin indent on
 
 
+" ==================== spaces and tabs ====================
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab number
 set regexpengine=1
 syntax on
@@ -74,48 +76,12 @@ set t_Co=256
 set background=dark
 " theme
 colorscheme nord
-" colorscheme vim-material
-
-
-" ==================== Nord ====================
-
-
-" ==================== NERDTree ====================
-" autocmd vimenter * NERDTree
-let NERDTreeShowHidden=1
 
 
 " ==================== Autocmd ====================
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,xhtml set omnifunc=htmlcomplete#CompleteTags
-
-
-" ==================== Syntastic ====================
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-
-" ==================== vim-fugitive ====================
-autocmd QuickFixCmdPost *grep* cwindow
-
-
-" ==================== UltiSnips ====================
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-
-
-" ==================== vim-snipmate ====================
-let g:snipMate = {}
-let g:snipMate.scope_aliases = {}
 
 
 " ==================== vim-airline ====================
@@ -133,11 +99,43 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 
-" ==================== vim-jsx ====================
-let g:jsx_ext_required = 0
+" ==================== Nord ====================
+
+
+" ==================== NERDTree ====================
+" autocmd vimenter * NERDTree
+let NERDTreeShowHidden=1
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-m> :NERDTreeFind<CR>
+
+
+" ==================== vim-easymotion ====================
+" next character search motion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+
+" ==================== tagbar ====================
+nmap <F8> :TagbarToggle<CR>
+
+
+" ==================== UltiSnips ====================
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+
+
+" ==================== vim-snipmate ====================
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
 
 
 " ==================== vim-javascript ====================
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 let g:javascript_conceal_function   = "ƒ"
 let g:javascript_conceal_null       = "ø"
 let g:javascript_conceal_this       = "@"
@@ -150,16 +148,42 @@ let g:javascript_conceal_super      = "Ω"
 
 
 " ==================== vim-jsdoc ====================
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_input_description = 1
-let g:jsdoc_additional_descriptions = 1
-let g:jsdoc_return = 1
-let g:jsdoc_return_type = 1
-let g:jsdoc_return_description = 1
-let g:jsdoc_access_descriptions = 1
-let g:jsdoc_underscore_private = 1
-let g:jsdoc_param_description_separator = ''
-let g:jsdoc_enable_es6 = 1
+nmap <silent> <C-l> <Plug>(jsdoc)
+
+
+" ==================== vim-jsx ====================
+let g:jsx_ext_required = 0
+
+
+" ==================== vim-jsx-pretty ====================
+" Colorful style (vim-javascript only)
+let g:vim_jsx_pretty_colorful_config = 1
+
+
+" ==================== emmet-vim ====================
+
+
+" ==================== sparkup ====================
+" sparkup/issues/139 in #139 support jsx
+autocmd FileType javascript.jsx runtime ftplugin/html/sparkup.vim
+
+
+" ==================== vim-fugitive ====================
+
+
+" ==================== vim-signify ====================
+set updatetime=100
+
+
+" ==================== Syntastic ====================
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers = ['eslint', 'flow', 'flow-language-server']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 
 " ==================== vim-go ====================
@@ -170,34 +194,16 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 
-" ==================== vim-easymotion ====================
-" n-character search motion
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
-
 " ==================== Ale Linter ====================
-" Enable ESLint only for JavaScript.
-let b:ale_linters = ['eslint']
-" Equivalent to the above.
-let b:ale_linters = {'javascript': ['eslint']}
-
-
-" ==================== Vim jsx pretty ====================
-" Colorful style (vim-javascript only)
-let g:vim_jsx_pretty_disable_tsx = 0
-let g:vim_jsx_pretty_template_tags = ['html', 'jsx']
-let g:vim_jsx_pretty_highlight_close_tag = 0
-let g:vim_jsx_pretty_colorful_config = 1
+" " Enable ESLint only for JavaScript.
+" let b:ale_linters = ['eslint']
+" " Equivalent to the above.
+" let b:ale_linters = {'javascript': ['eslint', 'flow', 'flow-language-server']}
 
 
 " ==================== coc ====================
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-eslint', 'coc-flow', 'coc-tsserver', 'coc-highlight', 'coc-snippets', 'coc-tabnine']
 
 
 " ==================== Keymap ====================
-nmap <C-n> :NERDTreeToggle<CR>
-nmap <C-m> :NERDTreeFind<CR>
-nmap <F8> :TagbarToggle<CR>
+
