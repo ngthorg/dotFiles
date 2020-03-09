@@ -9,14 +9,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'hzchirs/vim-material'
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+	" Plug 'vim-airline/vim-airline-themes'
+	Plug 'ap/vim-css-color'
   " File Explorer with Icons
 	Plug 'preservim/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
-	Plug 'ryanoasis/vim-devicos'
+	Plug 'ryanoasis/vim-devicons'
   " File Search
-	Plug 'kien/ctrlp.vim'
-	Plug 'wincent/command-t'
+	Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
   " Utility
 	Plug 'majutsushi/tagbar'
 	Plug 'suan/vim-instant-markdown'
@@ -31,14 +33,17 @@ call plug#begin('~/.vim/plugged')
 	Plug 'garbas/vim-snipmate'
 	Plug 'SirVer/ultisnips', { 'tag': '3.2' }
 	Plug 'honza/vim-snippets'
+  " Plug 'terryma/vim-multiple-cursors'
   " Javascript
 	Plug 'pangloss/vim-javascript'
 	Plug 'isRuslan/vim-es6'
 	Plug 'heavenshell/vim-jsdoc'
 	" React
-	Plug 'mxw/vim-jsx'
+	" Plug 'mxw/vim-jsx'
 	Plug 'yuezk/vim-js'
+  Plug 'chemzqm/vim-jsx-improve'
 	Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'peitalin/vim-jsx-typescript'
 	Plug 'greg-js/vim-react-es6-snippets'
   " Html
   Plug 'mattn/emmet-vim'
@@ -46,7 +51,7 @@ call plug#begin('~/.vim/plugged')
 	" git
 	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
-	Plug 'mhinz/vim-signify'
+	" Plug 'mhinz/vim-signify'
 	" Syntax
 	Plug 'vim-syntastic/syntastic'
 	Plug 'sheerun/vim-polyglot'
@@ -59,12 +64,13 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 filetype plugin indent on
+syntax on
 
 
 " ==================== spaces and tabs ====================
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab number
-set regexpengine=1
-syntax on
+set showtabline=2
+set regexpengine=0
 
 
 " ==================== front, color, theme ====================
@@ -86,7 +92,7 @@ autocmd FileType html,xhtml set omnifunc=htmlcomplete#CompleteTags
 
 " ==================== vim-airline ====================
 set laststatus=2
-set ttimeoutlen=50
+" set ttimeoutlen=50
 let g:airline#extensions#disable_rtp_load = 1
 let g:airline_extensions = ['branch', 'tabline']
 let g:airline#extensions#tabline#enabled = 1
@@ -105,20 +111,55 @@ let g:airline_right_sep=''
 " ==================== NERDTree ====================
 " autocmd vimenter * NERDTree
 let NERDTreeShowHidden=1
-nmap <C-n> :NERDTreeToggle<CR>
-nmap <C-m> :NERDTreeFind<CR>
+
+
+" ==================== ctrlp.vim ====================
+let g:ctrlp_working_path_mode = 'ra'
+" https://github.com/kien/ctrlp.vim/issues/58#issuecomment-42743551
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
+
+" ==================== fzf.vim ====================
+" setup fzf.vim with preview files 
+command! -bang -nargs=* Files
+  \ call fzf#vim#files(<q-args>, {'options': ['--preview', '(bat --color=always {} || cat {}) 2> /dev/null | head -500']}, <bang>0)
+command! -bang -nargs=* GFiles
+  \ call fzf#vim#gitfiles(<q-args>,
+  \ {'options': ['--preview', 'git diff --color=always -- {-1} | sed 1,4d; (bat --color=always {-1} || cat {-1}) 2> /dev/null | head -500']}, <bang>0)
+command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
+command! -bang -nargs=* History call fzf#vim#history(fzf#vim#with_preview({'options': '--no-sort'}), <bang>0)
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+command! -bang -nargs=* Ag
+	\ call fzf#vim#grep('ag --nogroup --color --column '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=* Rg
+	\ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 
 " ==================== vim-easymotion ====================
-" next character search motion
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
 
 
 " ==================== tagbar ====================
-nmap <F8> :TagbarToggle<CR>
 
 
 " ==================== UltiSnips ====================
@@ -148,7 +189,6 @@ let g:javascript_conceal_super      = "Ω"
 
 
 " ==================== vim-jsdoc ====================
-nmap <silent> <C-l> <Plug>(jsdoc)
 
 
 " ==================== vim-jsx ====================
@@ -165,14 +205,14 @@ let g:vim_jsx_pretty_colorful_config = 1
 
 " ==================== sparkup ====================
 " sparkup/issues/139 in #139 support jsx
-autocmd FileType javascript.jsx runtime ftplugin/html/sparkup.vim
+" autocmd FileType javascript.jsx runtime ftplugin/html/sparkup.vim
 
 
 " ==================== vim-fugitive ====================
 
 
 " ==================== vim-signify ====================
-set updatetime=100
+" set updatetime=100
 
 
 " ==================== Syntastic ====================
@@ -180,6 +220,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_javascript_checkers = ['eslint', 'flow', 'flow-language-server']
+let g:syntastic_go_checkers = ['go']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -206,4 +247,17 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', '
 
 
 " ==================== Keymap ====================
-
+"" NERDTree
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-m> :NERDTreeFind<CR>
+"" vim-easymotion next character search motion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+"" vim-tagbar
+nmap <F8> :TagbarToggle<CR>
+"" vim-jsdoc
+nmap <silent> <C-l> <Plug>(jsdoc)
+"" vim-syntastic
+nmap <C-z> :lfirst<CR>
