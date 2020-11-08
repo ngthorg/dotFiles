@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'hzchirs/vim-material'
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'vim-airline/vim-airline'
-	" Plug 'vim-airline/vim-airline-themes'
 	Plug 'ap/vim-css-color'
   " File Explorer with Icons
 	Plug 'preservim/nerdtree'
@@ -20,13 +19,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   " Utility
-	Plug 'majutsushi/tagbar'
+  Plug 'michaeljsmith/vim-indent-object'
+	Plug 'preservim/tagbar'
 	Plug 'suan/vim-instant-markdown'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
   Plug 'junegunn/goyo.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  " testing
+  Plug 'vim-test/vim-test'
 	" Utility Snippets
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
@@ -35,12 +38,12 @@ call plug#begin('~/.vim/plugged')
 	Plug 'honza/vim-snippets'
   " Plug 'terryma/vim-multiple-cursors'
   " Javascript
-	Plug 'pangloss/vim-javascript'
+  Plug 'pangloss/vim-javascript'
 	Plug 'isRuslan/vim-es6'
 	Plug 'heavenshell/vim-jsdoc'
 	" React
 	" Plug 'mxw/vim-jsx'
-	Plug 'yuezk/vim-js'
+  Plug 'yuezk/vim-js'
   Plug 'chemzqm/vim-jsx-improve'
 	Plug 'maxmellon/vim-jsx-pretty'
   Plug 'peitalin/vim-jsx-typescript'
@@ -68,9 +71,14 @@ syntax on
 
 
 " ==================== spaces and tabs ====================
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab number
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab number relativenumber cursorline
 set showtabline=2
 set regexpengine=0
+
+
+
+" ==================== mouse ====================
+set mouse=a
 
 
 " ==================== front, color, theme ====================
@@ -79,6 +87,7 @@ set encoding=UTF-8
 set guifont=DroidSansMono\ Nerd\ Font:h11
 " color
 set t_Co=256
+set termguicolors
 set background=dark
 " theme
 colorscheme nord
@@ -99,8 +108,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='nord'
-let g:airline_theme='material'
+let g:airline_theme='nord'
+" let g:airline_theme='material'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -110,6 +119,7 @@ let g:airline_right_sep=''
 
 " ==================== NERDTree ====================
 " autocmd vimenter * NERDTree
+let NERDTreeDirArrows  = 1
 let NERDTreeShowHidden=1
 
 
@@ -123,21 +133,6 @@ let g:ctrlp_custom_ignore = {
 
 
 " ==================== fzf.vim ====================
-" setup fzf.vim with preview files 
-command! -bang -nargs=* Files
-  \ call fzf#vim#files(<q-args>, {'options': ['--preview', '(bat --color=always {} || cat {}) 2> /dev/null | head -500']}, <bang>0)
-command! -bang -nargs=* GFiles
-  \ call fzf#vim#gitfiles(<q-args>,
-  \ {'options': ['--preview', 'git diff --color=always -- {-1} | sed 1,4d; (bat --color=always {-1} || cat {-1}) 2> /dev/null | head -500']}, <bang>0)
-command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
-command! -bang -nargs=* History call fzf#vim#history(fzf#vim#with_preview({'options': '--no-sort'}), <bang>0)
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-command! -bang -nargs=* Ag
-	\ call fzf#vim#grep('ag --nogroup --color --column '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=* Rg
-	\ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options
 let g:fzf_colors =
@@ -154,7 +149,6 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-
 
 " ==================== vim-easymotion ====================
 
@@ -176,7 +170,6 @@ let g:snipMate.scope_aliases = {}
 
 " ==================== vim-javascript ====================
 let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_flow = 1
 let g:javascript_conceal_function   = "ƒ"
 let g:javascript_conceal_null       = "ø"
 let g:javascript_conceal_this       = "@"
@@ -189,6 +182,8 @@ let g:javascript_conceal_super      = "Ω"
 
 
 " ==================== vim-jsdoc ====================
+" sudo npm i -g lehre
+let g:jsdoc_lehre_path = '/usr/bin/lehre'
 
 
 " ==================== vim-jsx ====================
@@ -219,7 +214,7 @@ let g:vim_jsx_pretty_colorful_config = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_javascript_checkers = ['eslint', 'flow', 'flow-language-server']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -243,7 +238,7 @@ let g:go_highlight_build_constraints = 1
 
 
 " ==================== coc ====================
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-eslint', 'coc-flow', 'coc-tsserver', 'coc-highlight', 'coc-snippets', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-eslint', 'coc-tsserver', 'coc-highlight', 'coc-snippets', 'coc-tabnine']
 
 
 " ==================== Keymap ====================
@@ -261,3 +256,8 @@ nmap <F8> :TagbarToggle<CR>
 nmap <silent> <C-l> <Plug>(jsdoc)
 "" vim-syntastic
 nmap <C-z> :lfirst<CR>
+"" vim-fzf
+nnoremap <silent> <Leader><Space> :Files<CR>
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
+

@@ -1,17 +1,19 @@
 {
-  "tsserver.enableJavascript": false,
+  "tsserver.enable": true,
+  "tsserver.enableJavascript": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "json",
+    "graphql"
+  ],
   "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
-    },
-    "flow": {
-      "command": "flow-language-server",
-      "args": ["--stdio", "--try-flow-bin"],
-      "filetypes": ["javascript", "javascript.jsx"],
-      "initializationOptions": {},
-      "settings": {}
     }
   }
 }
