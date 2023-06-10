@@ -87,8 +87,9 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export GOPATH=~/go
+export CARGOPATH=~/.cargo
 export GOROOT=/usr/local/go
-export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+export PATH=$GOROOT/bin:$GOPATH/bin:$CARGOPATH/bin:$PATH
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
