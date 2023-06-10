@@ -135,3 +135,6 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=yellow'
 ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
 
 ZSH_HIGHLIGHT_STYLES[root]='bg=red'
+
+source <(kubectl completion zsh)
+
