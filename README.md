@@ -34,7 +34,7 @@ sudo mv nvim.appimage /usr/bin/nvim
 ```zsh
 curl https://sh.rustup.rs -sSf | sh
 ```
-2. instal
+2. install alacritty
 ```
 dnf install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
 cargo install alacritty
